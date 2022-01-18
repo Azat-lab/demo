@@ -7,42 +7,41 @@ import javax.persistence.Id;
 public class Country {
 
     @Id
-    private String cityName;
-    private int city_area_code;
-    private String adress;
+    private String countryName;
+    private Long country_area_code_id;
+    private String address;
 
     public Country(String cityName,
-                   int city_area_code,
+                   long country_area_code_id,
                    String adress) {
-        this.cityName = cityName;
-        this.city_area_code = city_area_code;
-        this.adress = adress;
+        this.countryName = countryName;
+        this.country_area_code_id = country_area_code_id;
+        this.address = address;
     }
 
-    public String getCityName() {
-        return cityName;
+    public String getCountryName() {
+        return countryName;
     }
 
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
     }
 
-    public int getCity_area_code() {
-        return city_area_code;
+    public long getCountry_area_code_id() {
+        return country_area_code_id;
     }
 
-    public void setCity_area_code(int city_area_code) {
-        this.city_area_code = city_area_code;
+    public void setCCountry_area_code_id(long country_area_code_id) {
+        this.country_area_code_id = country_area_code_id;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
-
 
 }
 
