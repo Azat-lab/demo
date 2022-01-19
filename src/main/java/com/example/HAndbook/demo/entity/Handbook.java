@@ -1,17 +1,15 @@
 package com.example.HAndbook.demo.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "handbook")
 public class Handbook {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "person_id")
-    private int PersonId;
+    private Long PersonId;
 
     @Column(name = "person_name")
     private String PersonName;
@@ -20,14 +18,13 @@ public class Handbook {
     private String PersonSurname;
 
     @Column(name = "phone_number")
-    private int PhoneNumber;
+    private Integer PhoneNumber;
 
-
-    public int getPersonId() {
+    public Long getPersonId() {
         return PersonId;
     }
 
-    public void setPersonId(int personId) {
+    public void setPersonId(Long personId) {
         PersonId = personId;
     }
 
@@ -47,24 +44,24 @@ public class Handbook {
         PersonSurname = personSurname;
     }
 
-    public int getPhoneNumber() {
+    public Integer getPhoneNumber() {
         return PhoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(Integer phoneNumber) {
         PhoneNumber = phoneNumber;
     }
 
     public Handbook() {
     }
 
-    public Handbook(int personId, int phoneNumber) {
+    public Handbook(Long personId, Integer phoneNumber) {
         this.PersonId = personId;
         this.PhoneNumber = phoneNumber;
     }
 
-    public Handbook(int personId, String personName, String personSurname,
-                    int phoneNumber) {
+    public Handbook(Long personId, String personName, String personSurname,
+                    Integer phoneNumber) {
         this.PersonId = personId;
         this.PersonName = personName;
         this.PersonSurname = personSurname;
@@ -72,21 +69,29 @@ public class Handbook {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null || getClass() != obj.getClass())
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Handbook handbook = (Handbook) o;
+
+        if (PersonId != null ? !PersonId.equals(handbook.PersonId) : handbook.PersonId != null) return false;
+        if (PersonName != null ? !PersonName.equals(handbook.PersonName) : handbook.PersonName != null) return false;
+        if (PersonSurname != null ? !PersonSurname.equals(handbook.PersonSurname) : handbook.PersonSurname != null)
             return false;
-       Handbook handbook = (Handbook) obj;
-        return Objects.equals(PersonId, handbook.PersonId) &&
-                Objects.equals(PersonName, handbook.PersonName) &&
-                Objects.equals(PersonName, handbook.PersonSurname) &&
-                Objects.equals(PhoneNumber, handbook.PhoneNumber);
+        if (PhoneNumber != null ? !PhoneNumber.equals(handbook.PhoneNumber) : handbook.PhoneNumber != null)
+            return false;
+
+        return true;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(PersonId, PersonName, PersonSurname, PhoneNumber);
+        int result = PersonId != null ? PersonId.hashCode() : 0;
+        result = 31 * result + (PersonName != null ? PersonName.hashCode() : 0);
+        result = 31 * result + (PersonSurname != null ? PersonSurname.hashCode() : 0);
+        result = 31 * result + (PhoneNumber != null ? PhoneNumber.hashCode() : 0);
+        return result;
     }
 
     @Override

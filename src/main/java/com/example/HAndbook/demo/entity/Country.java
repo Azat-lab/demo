@@ -1,21 +1,16 @@
 package com.example.HAndbook.demo.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @Table(name = "country")
 public class Country {
 
-    private static Object countryName;
-    private static Object address;
-    private static Object countryAreaCodeId;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "country_area_code_id")
-    private long CountryAreaCodeId;
+    private Long CountryAreaCodeId;
 
     @Column(name = "country_name")
     private String CountryName;
@@ -39,7 +34,7 @@ public class Country {
         return CountryAreaCodeId;
     }
 
-    public void setСountryAreaCodeId(long countryAreaCodeId) {
+    public void setСountryAreaCodeId(Long countryAreaCodeId) {
         this.CountryAreaCodeId = countryAreaCodeId;
     }
 
@@ -67,19 +62,41 @@ public class Country {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Country country = (Country) o;
+
+        if (CountryAreaCodeId != null ? !CountryAreaCodeId.equals(country.CountryAreaCodeId) : country.CountryAreaCodeId != null)
             return false;
-        return Objects.equals(CountryName, Country.countryName) &&
-                Objects.equals(CountryAreaCodeId, Country.countryAreaCodeId) &&
-                Objects.equals(Address, Country.address);
+        if (CountryName != null ? !CountryName.equals(country.CountryName) : country.CountryName != null) return false;
+        return Address != null ? Address.equals(country.Address) : country.Address == null;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(CountryName, CountryAreaCodeId, Address);
+        int result = CountryAreaCodeId != null ? CountryAreaCodeId.hashCode() : 0;
+        result = 31 * result + (CountryName != null ? CountryName.hashCode() : 0);
+        result = 31 * result + (Address != null ? Address.hashCode() : 0);
+        return result;
     }
+
+    //
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o)
+//            return true;
+//        if (o == null || getClass() != o.getClass())
+//            return false;
+//        return Objects.equals(CountryName, Country.countryName) &&
+//                Objects.equals(CountryAreaCodeId, Country.countryAreaCodeId) &&
+//                Objects.equals(Address, Country.address);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(CountryName, CountryAreaCodeId, Address);
+//    }
 
     @Override
     public String toString() {

@@ -1,18 +1,17 @@
 package com.example.HAndbook.demo.repository;
 
-import com.example.HAndbook.demo.entity.OperatorId;
+import com.example.HAndbook.demo.entity.Operator;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.util.List;
+@Repository
+public interface OperatorIdRepository extends JpaRepository<Operator, Long> {
 
-public interface OperatorIdRepository extends JpaRepository<OperatorId, Long> {
+//    Operator findByTelekomOperatorAndOperatorNameIdAndOperatorCodeAndOperatorCountry(String telekomOperator,
+//                                                                                      int operatorNameId, int operatorCode,
+//                                                                                      String operatorCountry);
 
-    OperatorId findByTelekomOperatorAAndOperatorNameIdAndOperatorCodeAndOperatorCountry(String telekomOperator,
-                                                                                        int operatorNameId, int operatorCode,
-                                                                                        String operatorCountry);
-
+    List<Operator> findAllByOperatorCountry(String operatorCountry);
 
 }
