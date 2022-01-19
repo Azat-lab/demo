@@ -1,7 +1,7 @@
-package com.example.HAndbook.demo.appConfig;
+package com.example.HAndbook.demo.appсonfig;
 
 import com.example.HAndbook.demo.HandbookService;
-import com.example.HAndbook.demo.service.Country;
+import com.example.HAndbook.demo.entity.Country;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,27 +15,22 @@ public class AppConfig {
         return new HandbookService() {
             @Override
             public void add(Country country) {
-
             }
 
             @Override
             public void save(Country country) {
-
             }
 
             @Override
             public void delete(long id) {
-
             }
 
             @Override
             public void search(long id) {
-
             }
 
             @Override
             public void update(Country country) {
-
             }
 
             @Override
@@ -47,12 +42,10 @@ public class AppConfig {
             public Optional<Country> findById(long Id) {
                 return Optional.empty();
             }
-
             @Override
             public Optional<Country> findByName(String name) {
                 return Optional.empty();
             }
-
         };
     }
 }

@@ -1,6 +1,6 @@
 package com.example.HAndbook.demo;
 
-import com.example.HAndbook.demo.service.Country;
+import com.example.HAndbook.demo.entity.Country;
 
 import java.util.List;
 import java.util.Optional;

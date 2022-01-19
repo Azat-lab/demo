@@ -1,14 +1,31 @@
 package com.example.HAndbook.demo.repository;
 
 
-import com.example.HAndbook.demo.service.Country;
+
+import com.example.HAndbook.demo.entity.Handbook;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
 
 @Repository
-public interface HandbookRepository extends JpaRepository<Country, Long> {
+public interface HandbookRepository extends JpaRepository<Handbook, Integer> {
+    @Query(value = "SELECT * FROM Handbook WHERE person_id=?1 AND person_name=?2 AND person_surname=?3 " +
+            "AND phone_number=?4", nativeQuery = true)
 
-    Optional<Country> findByName(String name);
+    Handbook findByPersonIdAAndPersonNameAndPersonSurnameAndPhoneNumber(int personId, String personName,
+                                                                        String personSurname, int phoneNumber);
+    Handbook findByPersonId(int personId);
 }
+//    @Id
+//    @Column(name = "person_id")
+//    private int PersonId;
+//
+//    @Column(name = "person_name")
+//    private String PersonName;
+//
+//    @Column(name = "person_surname")
+//    private String PersonSurname;
+//
+//    @Column(name = "phone_number")
+//    private int PhoneNumber;
