@@ -67,10 +67,10 @@ public class Country {
 
         Country country = (Country) o;
 
-        if (CountryAreaCodeId != null ? !CountryAreaCodeId.equals(country.CountryAreaCodeId) : country.CountryAreaCodeId != null)
+        if (!Objects.equals(CountryAreaCodeId, country.CountryAreaCodeId))
             return false;
-        if (CountryName != null ? !CountryName.equals(country.CountryName) : country.CountryName != null) return false;
-        return Address != null ? Address.equals(country.Address) : country.Address == null;
+        if (!Objects.equals(CountryName, country.CountryName)) return false;
+        return Objects.equals(Address, country.Address);
     }
 
     @Override
@@ -80,23 +80,6 @@ public class Country {
         result = 31 * result + (Address != null ? Address.hashCode() : 0);
         return result;
     }
-
-    //
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o)
-//            return true;
-//        if (o == null || getClass() != o.getClass())
-//            return false;
-//        return Objects.equals(CountryName, Country.countryName) &&
-//                Objects.equals(CountryAreaCodeId, Country.countryAreaCodeId) &&
-//                Objects.equals(Address, Country.address);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(CountryName, CountryAreaCodeId, Address);
-//    }
 
     @Override
     public String toString() {

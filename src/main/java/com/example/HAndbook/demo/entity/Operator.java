@@ -12,8 +12,8 @@ public class Operator {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "operator_name_id") // operator
-    private Long operatorNameId;
+    @Column(name = "operator_id") // operator
+    private Long operatorId;
 
     @Column(name = "operator_code")
     private Integer operatorCode;
@@ -29,12 +29,12 @@ public class Operator {
         this.telekomOperator = telekomOperator;
     }
 
-    public Long getOperatorNameId() {
-        return operatorNameId;
+    public Long getOperatorId() {
+        return operatorId;
     }
 
-    public void setOperatorNameId(Long operatorNameId) {
-        this.operatorNameId = operatorNameId;
+    public void setOperatorId(Long operatorId) {
+        this.operatorId = operatorId;
     }
 
     public Integer getOperatorCode() {
@@ -58,37 +58,37 @@ public class Operator {
     }
 
     public Operator(String telekomOperator,
-                    Long operatorNameId, String operatorCountry) {
+                    Long operatorId, String operatorCountry) {
         this.telekomOperator = telekomOperator;
-        this.operatorNameId = operatorNameId;
+        this.operatorId = operatorId;
         this.operatorCountry = operatorCountry;
     }
 
     public Operator(String telekomOperator, Integer operatorCode,
-                    Long operatorNameId, String operatorCountry) {
+                    Long operatorId, String operatorCountry) {
         this.telekomOperator = telekomOperator;
         this.operatorCode = operatorCode;
-        this.operatorNameId = operatorNameId;
+        this.operatorId = operatorId;
         this.operatorCountry = operatorCountry;
     }
 
     @Override
-    public boolean equals(Object ob) {
-        if (this == ob) return true;
-        if (ob == null || getClass() != ob.getClass())
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Operator operator = (Operator) o;
+        if (telekomOperator != null ? !telekomOperator.equals(operator.telekomOperator) : operator.telekomOperator != null)
             return false;
-        Operator operatorId = (Operator) ob;
-        return Objects.equals(telekomOperator, operatorId.telekomOperator) &&
-                Objects.equals(operatorCode, operatorId.operatorCode) &&
-                Objects.equals(operatorNameId, operatorId.operatorNameId) &&
-                Objects.equals(operatorCountry, operatorId.operatorCountry);
-
+        if (operatorId != null ? !operatorId.equals(operator.operatorId) : operator.operatorId != null) return false;
+        if (operatorCode != null ? !operatorCode.equals(operator.operatorCode) : operator.operatorCode != null)
+            return false;
+        return operatorCountry != null ? operatorCountry.equals(operator.operatorCountry) : operator.operatorCountry == null;
     }
 
     @Override
     public int hashCode() {
         int result = telekomOperator != null ? telekomOperator.hashCode() : 0;
-        result = 31 * result + (operatorNameId != null ? operatorNameId.hashCode() : 0);
+        result = 31 * result + (operatorId != null ? operatorId.hashCode() : 0);
         result = 31 * result + (operatorCode != null ? operatorCode.hashCode() : 0);
         result = 31 * result + (operatorCountry != null ? operatorCountry.hashCode() : 0);
         return result;
@@ -96,9 +96,9 @@ public class Operator {
 
     @Override
     public String toString() {
-        return "OperatorId{" +
+        return "Operator{" +
                 "telekomOperator='" + telekomOperator + '\'' +
-                ", operatorNameId=" + operatorNameId +
+                ", operatorId=" + operatorId +
                 ", operatorCode=" + operatorCode +
                 ", operatorCountry='" + operatorCountry + '\'' +
                 '}';
