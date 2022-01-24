@@ -77,12 +77,12 @@ public class Operator {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Operator operator = (Operator) o;
-        if (telekomOperator != null ? !telekomOperator.equals(operator.telekomOperator) : operator.telekomOperator != null)
+        if (!Objects.equals(telekomOperator, operator.telekomOperator))
             return false;
-        if (operatorId != null ? !operatorId.equals(operator.operatorId) : operator.operatorId != null) return false;
-        if (operatorCode != null ? !operatorCode.equals(operator.operatorCode) : operator.operatorCode != null)
+        if (!Objects.equals(operatorId, operator.operatorId)) return false;
+        if (!Objects.equals(operatorCode, operator.operatorCode))
             return false;
-        return operatorCountry != null ? operatorCountry.equals(operator.operatorCountry) : operator.operatorCountry == null;
+        return Objects.equals(operatorCountry, operator.operatorCountry);
     }
 
     @Override

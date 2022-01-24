@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "handbook")
-public class Handbook {
+@Table(name = "person")
+public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "person_id")
@@ -52,16 +52,16 @@ public class Handbook {
         PhoneNumber = phoneNumber;
     }
 
-    public Handbook() {
+    public Person() {
     }
 
-    public Handbook(Long personId, Integer phoneNumber) {
+    public Person(Long personId, Integer phoneNumber) {
         this.PersonId = personId;
         this.PhoneNumber = phoneNumber;
     }
 
-    public Handbook(Long personId, String personName, String personSurname,
-                    Integer phoneNumber) {
+    public Person(Long personId, String personName, String personSurname,
+                  Integer phoneNumber) {
         this.PersonId = personId;
         this.PersonName = personName;
         this.PersonSurname = personSurname;
@@ -73,13 +73,13 @@ public class Handbook {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Handbook handbook = (Handbook) o;
+        Person person = (Person) o;
 
-        if (PersonId != null ? !PersonId.equals(handbook.PersonId) : handbook.PersonId != null) return false;
-        if (PersonName != null ? !PersonName.equals(handbook.PersonName) : handbook.PersonName != null) return false;
-        if (PersonSurname != null ? !PersonSurname.equals(handbook.PersonSurname) : handbook.PersonSurname != null)
+        if (!Objects.equals(PersonId, person.PersonId)) return false;
+        if (!Objects.equals(PersonName, person.PersonName)) return false;
+        if (!Objects.equals(PersonSurname, person.PersonSurname))
             return false;
-        if (PhoneNumber != null ? !PhoneNumber.equals(handbook.PhoneNumber) : handbook.PhoneNumber != null)
+        if (!Objects.equals(PhoneNumber, person.PhoneNumber))
             return false;
 
         return true;
@@ -96,7 +96,7 @@ public class Handbook {
 
     @Override
     public String toString() {
-        return "Handbook{" +
+        return "Person{" +
                 "PersonId=" + PersonId +
                 ", PersonName='" + PersonName + '\'' +
                 ", PersonSurname='" + PersonSurname + '\'' +

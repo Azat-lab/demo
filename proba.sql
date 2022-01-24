@@ -14,13 +14,13 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema Handbook
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `Handbook` DEFAULT CHARACTER SET utf8 ;
-USE `Handbook` ;
+CREATE SCHEMA IF NOT EXISTS `Person` DEFAULT CHARACTER SET utf8 ;
+USE `Person` ;
 
 -- -----------------------------------------------------
 -- Table `Handbook`.`country`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Handbook`.`country` (
+CREATE TABLE IF NOT EXISTS `Person`.`country` (
   `country_area_code_id` INT NOT NULL AUTO_INCREMENT,
   `country_name` VARCHAR(50) NULL,
   `address` VARCHAR(120) NOT NULL,
@@ -48,9 +48,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `Handbook`.`handbook`
+-- Table `Person`.`person`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Handbook`.`handbook` (
+CREATE TABLE IF NOT EXISTS `Person`.`person` (
   `person_id` INT NOT NULL,
   `person_name` VARCHAR(50) NOT NULL,
   `person_surname` VARCHAR(50) NOT NULL,
