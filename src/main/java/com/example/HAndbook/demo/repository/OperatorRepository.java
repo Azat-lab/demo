@@ -6,8 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
-public interface IOperatorRepository extends JpaRepository<Operator, Long> {
-    List<Operator> findByOperatorId(Long operatorId);
+public interface OperatorRepository extends JpaRepository<Operator, Long> {
+    List<Operator> findOperatorId(Long operatorId);
 
    // List<Operator> findAllByOperatorCountry(String operatorCountry);
 

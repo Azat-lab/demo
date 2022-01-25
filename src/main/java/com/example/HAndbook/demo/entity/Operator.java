@@ -7,9 +7,6 @@ import java.util.Objects;
 @Table(name = "operator")
 public class Operator {
 
-    @Column(name = "telekom_operator")
-    private String telekomOperator;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "operator_id") // operator
@@ -21,13 +18,6 @@ public class Operator {
     @Column(name = "operator_country")
     private String operatorCountry;
 
-    public String getTelekomOperator() {
-        return telekomOperator;
-    }
-
-    public void setTelekomOperator(String telekomOperator) {
-        this.telekomOperator = telekomOperator;
-    }
 
     public Long getOperatorId() {
         return operatorId;
@@ -57,16 +47,13 @@ public class Operator {
 
     }
 
-    public Operator(String telekomOperator,
-                    Long operatorId, String operatorCountry) {
-        this.telekomOperator = telekomOperator;
+    public Operator(Long operatorId, String operatorCountry) {
         this.operatorId = operatorId;
         this.operatorCountry = operatorCountry;
     }
 
-    public Operator(String telekomOperator, Integer operatorCode,
+    public Operator(Integer operatorCode,
                     Long operatorId, String operatorCountry) {
-        this.telekomOperator = telekomOperator;
         this.operatorCode = operatorCode;
         this.operatorId = operatorId;
         this.operatorCountry = operatorCountry;
@@ -77,8 +64,6 @@ public class Operator {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Operator operator = (Operator) o;
-        if (!Objects.equals(telekomOperator, operator.telekomOperator))
-            return false;
         if (!Objects.equals(operatorId, operator.operatorId)) return false;
         if (!Objects.equals(operatorCode, operator.operatorCode))
             return false;
@@ -87,8 +72,7 @@ public class Operator {
 
     @Override
     public int hashCode() {
-        int result = telekomOperator != null ? telekomOperator.hashCode() : 0;
-        result = 31 * result + (operatorId != null ? operatorId.hashCode() : 0);
+        int result = operatorId != null ? operatorId.hashCode() : 0;
         result = 31 * result + (operatorCode != null ? operatorCode.hashCode() : 0);
         result = 31 * result + (operatorCountry != null ? operatorCountry.hashCode() : 0);
         return result;
@@ -97,7 +81,6 @@ public class Operator {
     @Override
     public String toString() {
         return "Operator{" +
-                "telekomOperator='" + telekomOperator + '\'' +
                 ", operatorId=" + operatorId +
                 ", operatorCode=" + operatorCode +
                 ", operatorCountry='" + operatorCountry + '\'' +

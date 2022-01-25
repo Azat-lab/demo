@@ -1,41 +1,48 @@
 package com.example.HAndbook.demo.service.impl;
 
 import com.example.HAndbook.demo.entity.Person;
-import com.example.HAndbook.demo.repository.IPersonRepository;
-import com.example.HAndbook.demo.service.IPersonService;
+import com.example.HAndbook.demo.repository.PersonRepository;
+import com.example.HAndbook.demo.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class PersonServiceImpl implements IPersonService {
+public class PersonServiceImpl implements PersonService {
 
-    private final IPersonRepository iPersonRepository;
+    private final PersonRepository personRepository;
     @Autowired
-    public PersonServiceImpl(IPersonRepository iPersonRepository){
-        this.iPersonRepository = iPersonRepository;
+     public PersonServiceImpl(PersonRepository personRepository){
+        this.personRepository = personRepository;
+        }
+
+    @Override
+    public Person createPerson(Person person) {
+        Person createPerson = (Person) personRepository.createPersonList(person.getPersonName(), person.getPersonSurname());
+        return null;
     }
+
     @Override
     public Person savePersonByName(Person person) {
-        Person savedPersonName = iPersonRepository.saveAndFlush(person);
+        Person savedPersonName = personRepository.saveAndFlush(person);
         return savedPersonName;
     }
 
     @Override
-    public Iterable<? extends Integer> deletePersonId(Long id) {
-        iPersonRepository.deleteAllById(deletePersonId(id));
+    public Iterable<? extends Integer> deletePerson(Long id) {
+        personRepository.deleteByPersonId(deletePerson(getByPersonId(id)));
 
-        return deletePersonId(id);
+        return deletePerson(id);
     }
 
     @Override
-    public List<Person> getByPersonId(Long personId) {
-        return  iPersonRepository.findByPersonId(personId); // позже пофиксить
+    public Long getByPersonId(Long personId) {
+        return  personRepository.findByPersonId(personId); // позже пофиксить
     }
 
     @Override
     public List<Person> getAll() {
-        return iPersonRepository.findAll();
+        return personRepository.findAll();
     }
 }

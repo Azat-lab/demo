@@ -1,39 +1,65 @@
 package com.example.HAndbook.demo.service.impl;
 
 import com.example.HAndbook.demo.entity.Country;
-import com.example.HAndbook.demo.repository.ICountryRepository;
-import com.example.HAndbook.demo.service.ICountryService;
+import com.example.HAndbook.demo.repository.CountryRepository;
+import com.example.HAndbook.demo.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
-public class CountryServiceImpl implements ICountryService {
-
-    private final ICountryRepository iCountryRepository;
+public class CountryServiceImpl implements CountryService {
     @Autowired
-    public CountryServiceImpl(ICountryRepository iCountryRepository){
-        this.iCountryRepository = iCountryRepository;
-    }
+    private final CountryRepository countryRepository;
 
+    public CountryServiceImpl(CountryRepository countryRepository) {
+        this.countryRepository = countryRepository;
+    }
     @Override
-    public Country saveCountry(Country country) {
-        Country savedCountry = iCountryRepository.saveAndFlush(country);
-        return savedCountry;
+    public Country getByName(String country) {
+        return (Country) countryRepository.findByCountryName(country); // посмотреть позже!!!
     }
-
     @Override
-    public void deleteCountry(Long id) {
-        iCountryRepository.deleteById(id);
+    public Optional<Country> findById(Long id) {
+        return countryRepository.findById(id);
     }
-
     @Override
-    public Country getByCountryName(String name) {
-        return null;
+    public void save(Country country) {
+        countryRepository.save(country);
     }
-
+    @Override
+    public void delete(Long id) {
+        countryRepository.deleteById(id);
+    }
     @Override
     public List<Country> getAll() {
-        return  iCountryRepository.findAll();
+        return countryRepository.findAll();
     }
+
+//    public Optional<Country> save(Country country){
+//        return Optional.of(countryRepository.save(country));
+//    }
+
+//    @Override
+//    public Country saveCountry(Country country) {
+//        Country savedCountry = countryRepository.saveAndFlush(country);
+//        return savedCountry;
+//    }
+//
+//    @Override
+//    public void deleteCountry(Long id) {
+//        countryRepository.deleteById(id);
+//    }
+//
+//    @Override
+//    public Country getByCountryName(String name) {
+//        return (Country) countryRepository.findAll();
+//    }
+//
+//    @Override
+//    public List<Country> getAll() {
+//        return  countryRepository.findAll();
+//    }
 }

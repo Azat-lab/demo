@@ -1,63 +1,66 @@
 package com.example.HAndbook.demo.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "country")
-public class Country {
+public class Country{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "country_area_code_id")
-    private Long CountryAreaCodeId;
+    @Column(name = "country_area_code_id", nullable=false, unique = true)
+    private Long countryAreaCodeId;
 
-    @Column(name = "country_name")
-    private String CountryName;
+    @Column(name = "country_name", nullable=false, unique=true)
+    private String countryName;
 
-    @Column(name = "address")
-    private String Address;
+    @Column(name = "address", nullable=false)
+    private String address;
+
 
     public Country() {
 
     }
 
     public String getCountryName() {
-        return CountryName;
+        return countryName;
     }
 
     public void setCountryName(String countryName) {
-        this.CountryName = countryName;
+        this.countryName = countryName;
     }
 
     public long getCountryAreaCodeId() {
-        return CountryAreaCodeId;
+        return countryAreaCodeId;
     }
 
     public void setСountryAreaCodeId(Long countryAreaCodeId) {
-        this.CountryAreaCodeId = countryAreaCodeId;
+        this.countryAreaCodeId = countryAreaCodeId;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        this.Address = address;
+        this.address = address;
     }
 
     public void Country() {
     }
 
     public Country(String countryName, String address) {
-        this.CountryName = countryName;
-        this.Address = address;
+        this.countryName = countryName;
+        this.address = address;
     }
 
     public Country(String countryName, Long countryAreaCodeId, String address) {
-        this.CountryName = countryName;
-        this.CountryAreaCodeId = countryAreaCodeId;
-        this.Address = address;
+        this.countryName = countryName;
+        this.countryAreaCodeId = countryAreaCodeId;
+        this.address = address;
     }
 
     @Override
@@ -67,26 +70,26 @@ public class Country {
 
         Country country = (Country) o;
 
-        if (!Objects.equals(CountryAreaCodeId, country.CountryAreaCodeId))
+        if (!Objects.equals(countryAreaCodeId, country.countryAreaCodeId))
             return false;
-        if (!Objects.equals(CountryName, country.CountryName)) return false;
-        return Objects.equals(Address, country.Address);
+        if (!Objects.equals(countryName, country.countryName)) return false;
+        return Objects.equals(address, country.address);
     }
 
     @Override
     public int hashCode() {
-        int result = CountryAreaCodeId != null ? CountryAreaCodeId.hashCode() : 0;
-        result = 31 * result + (CountryName != null ? CountryName.hashCode() : 0);
-        result = 31 * result + (Address != null ? Address.hashCode() : 0);
+        int result = countryAreaCodeId != null ? countryAreaCodeId.hashCode() : 0;
+        result = 31 * result + (countryName != null ? countryName.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
         return "Country{" +
-                "CountryAreaCodeId=" + CountryAreaCodeId +
-                ", CountryName='" + CountryName + '\'' +
-                ", Address='" + Address + '\'' +
+                "CountryAreaCodeId=" + countryAreaCodeId +
+                ", CountryName='" + countryName + '\'' +
+                ", Address='" + address + '\'' +
                 '}';
     }
 }

@@ -8,8 +8,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ICountryRepository extends JpaRepository<Country, Long> {
-    List<Country> findByCountryName(String countryName);
+public interface CountryRepository extends JpaRepository<Country, Long> {
+    List<Country> findByCountryName(String country);
+    void findByCountryAreaCodeId(Long id);
+    List<Country> findByAddress(String address);
 
 
 

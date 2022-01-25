@@ -9,63 +9,63 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "person_id")
-    private Long PersonId;
+    private Long personId;
 
     @Column(name = "person_name")
-    private String PersonName;
+    private String personName;
 
     @Column(name = "person_surname")
-    private String PersonSurname;
+    private String personSurname;
 
     @Column(name = "phone_number")
-    private Integer PhoneNumber;
+    private Integer phoneNumber;
 
     public Long getPersonId() {
-        return PersonId;
+        return personId;
     }
 
     public void setPersonId(Long personId) {
-        PersonId = personId;
+        personId = personId;
     }
 
     public String getPersonName() {
-        return PersonName;
+        return personName;
     }
 
     public void setPersonName(String personName) {
-        PersonName = personName;
+        personName = personName;
     }
 
     public String getPersonSurname() {
-        return PersonSurname;
+        return personSurname;
     }
 
     public void setPersonSurname(String personSurname) {
-        PersonSurname = personSurname;
+        personSurname = personSurname;
     }
 
     public Integer getPhoneNumber() {
-        return PhoneNumber;
+        return phoneNumber;
     }
 
     public void setPhoneNumber(Integer phoneNumber) {
-        PhoneNumber = phoneNumber;
+        phoneNumber = phoneNumber;
     }
 
     public Person() {
     }
 
     public Person(Long personId, Integer phoneNumber) {
-        this.PersonId = personId;
-        this.PhoneNumber = phoneNumber;
+        this.personId = personId;
+        this.phoneNumber = phoneNumber;
     }
 
     public Person(Long personId, String personName, String personSurname,
                   Integer phoneNumber) {
-        this.PersonId = personId;
-        this.PersonName = personName;
-        this.PersonSurname = personSurname;
-        this.PhoneNumber = phoneNumber;
+        this.personId = personId;
+        this.personName = personName;
+        this.personSurname = personSurname;
+        this.phoneNumber = phoneNumber;
     }
 
     @Override
@@ -75,11 +75,11 @@ public class Person {
 
         Person person = (Person) o;
 
-        if (!Objects.equals(PersonId, person.PersonId)) return false;
-        if (!Objects.equals(PersonName, person.PersonName)) return false;
-        if (!Objects.equals(PersonSurname, person.PersonSurname))
+        if (!Objects.equals(personId, person.personId)) return false;
+        if (!Objects.equals(personName, person.personName)) return false;
+        if (!Objects.equals(personSurname, person.personSurname))
             return false;
-        if (!Objects.equals(PhoneNumber, person.PhoneNumber))
+        if (!Objects.equals(phoneNumber, person.phoneNumber))
             return false;
 
         return true;
@@ -87,20 +87,20 @@ public class Person {
 
     @Override
     public int hashCode() {
-        int result = PersonId != null ? PersonId.hashCode() : 0;
-        result = 31 * result + (PersonName != null ? PersonName.hashCode() : 0);
-        result = 31 * result + (PersonSurname != null ? PersonSurname.hashCode() : 0);
-        result = 31 * result + (PhoneNumber != null ? PhoneNumber.hashCode() : 0);
+        int result = personId != null ? personId.hashCode() : 0;
+        result = 31 * result + (personName != null ? personName.hashCode() : 0);
+        result = 31 * result + (personSurname != null ? personSurname.hashCode() : 0);
+        result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
         return "Person{" +
-                "PersonId=" + PersonId +
-                ", PersonName='" + PersonName + '\'' +
-                ", PersonSurname='" + PersonSurname + '\'' +
-                ", PhoneNumber=" + PhoneNumber +
+                "PersonId=" + personId +
+                ", PersonName='" + personName + '\'' +
+                ", PersonSurname='" + personSurname + '\'' +
+                ", PhoneNumber=" + phoneNumber +
                 '}';
     }
 }
