@@ -5,10 +5,10 @@ import com.example.HAndbook.demo.entity.Person;
 import java.util.List;
 
 public interface PersonService {
-    Person createPerson(Person person);
-    Person savePersonByName(Person person);
+    Person saveByName(Person person);
     Iterable<? extends Integer> deletePerson(Long id);
     Long getByPersonId(Long personId);
+    void delete(Long id);
     List<Person> getAll();
 
 }

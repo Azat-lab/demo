@@ -30,9 +30,9 @@ public class CountryController {
         Country country = this.countryService.getByName(String.valueOf(countryId));
 
         if(country == null){
-            return new ResponseEntity<Country>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<Country>(country, HttpStatus.OK);
+        return new ResponseEntity<>(country, HttpStatus.OK);
     }}
 
 

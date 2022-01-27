@@ -1,5 +1,6 @@
 package com.example.HAndbook.demo.service.impl;
 
+import com.example.HAndbook.demo.entity.Country;
 import com.example.HAndbook.demo.entity.Person;
 import com.example.HAndbook.demo.repository.PersonRepository;
 import com.example.HAndbook.demo.service.PersonService;
@@ -7,42 +8,42 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PersonServiceImpl implements PersonService {
-
-    private final PersonRepository personRepository;
     @Autowired
-     public PersonServiceImpl(PersonRepository personRepository){
-        this.personRepository = personRepository;
-        }
+    private PersonRepository personRepository;
 
     @Override
-    public Person createPerson(Person person) {
-        Person createPerson = (Person) personRepository.createPersonList(person.getPersonName(), person.getPersonSurname());
+    public Person saveByName(Person person) {
         return null;
     }
 
     @Override
-    public Person savePersonByName(Person person) {
-        Person savedPersonName = personRepository.saveAndFlush(person);
-        return savedPersonName;
-    }
-
-    @Override
     public Iterable<? extends Integer> deletePerson(Long id) {
-        personRepository.deleteByPersonId(deletePerson(getByPersonId(id)));
-
-        return deletePerson(id);
+        return null;
     }
-
     @Override
     public Long getByPersonId(Long personId) {
-        return  personRepository.findByPersonId(personId); // позже пофиксить
+        return null;
+    }
+
+    @Override
+    public void delete(Long id) {
+
     }
 
     @Override
     public List<Person> getAll() {
-        return personRepository.findAll();
+        return null;
     }
+
+
+//
+//     public PersonServiceImpl(PersonRepository personRepository){
+//        this.personRepository = personRepository;
+//        }
+
+
 }

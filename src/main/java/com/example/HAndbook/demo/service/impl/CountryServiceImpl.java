@@ -12,11 +12,11 @@ import java.util.Optional;
 @Service
 public class CountryServiceImpl implements CountryService {
     @Autowired
-    private final CountryRepository countryRepository;
+    private CountryRepository countryRepository;
 
-    public CountryServiceImpl(CountryRepository countryRepository) {
-        this.countryRepository = countryRepository;
-    }
+//    public CountryServiceImpl(CountryRepository countryRepository) {
+//        this.countryRepository = countryRepository;
+//    }
     @Override
     public Country getByName(String country) {
         return (Country) countryRepository.findByCountryName(country); // посмотреть позже!!!

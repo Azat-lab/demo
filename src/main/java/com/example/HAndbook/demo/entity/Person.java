@@ -20,6 +20,10 @@ public class Person {
     @Column(name = "phone_number")
     private Integer phoneNumber;
 
+    public Person(String personName, String personSurname) {
+    }
+
+
     public Long getPersonId() {
         return personId;
     }
