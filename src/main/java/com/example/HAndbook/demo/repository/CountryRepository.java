@@ -9,9 +9,13 @@ import java.util.List;
 
 @Repository
 public interface CountryRepository extends JpaRepository<Country, Long> {
-    List<Country> findByCountryName(String country);
+    List<Country> saveCountry(String countryName, String address);
+    List<Country> findByCountryNameAndAddress(String countryName, String address);
     void findByCountryAreaCodeId(Long id);
-    List<Country> findByAddress(String address);
+    void deleteCountryById(Long id);
+    List<Country> findAll();
+
+
 
 
 

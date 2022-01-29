@@ -1,19 +1,15 @@
 package com.example.HAndbook.demo.service.impl;
 
-import com.example.HAndbook.demo.entity.Country;
+
 import com.example.HAndbook.demo.entity.Person;
-import com.example.HAndbook.demo.repository.PersonRepository;
 import com.example.HAndbook.demo.service.PersonService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class PersonServiceImpl implements PersonService {
-    @Autowired
-    private PersonRepository personRepository;
 
     @Override
     public Person saveByName(Person person) {

@@ -17,10 +17,13 @@ public class CountryServiceImpl implements CountryService {
 //    public CountryServiceImpl(CountryRepository countryRepository) {
 //        this.countryRepository = countryRepository;
 //    }
+    // посмотреть позже!!!
+
     @Override
     public Country getByName(String country) {
-        return (Country) countryRepository.findByCountryName(country); // посмотреть позже!!!
+        return null;
     }
+
     @Override
     public Optional<Country> findById(Long id) {
         return countryRepository.findById(id);

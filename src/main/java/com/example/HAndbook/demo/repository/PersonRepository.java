@@ -3,6 +3,7 @@ package com.example.HAndbook.demo.repository;
 
 
 import com.example.HAndbook.demo.entity.Person;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import org.springframework.stereotype.Repository;
