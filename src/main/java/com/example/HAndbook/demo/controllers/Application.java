@@ -30,6 +30,7 @@ import java.util.Optional;
 @EnableAutoConfiguration
 public class Application {
 @Bean
+@Autowired
 CommandLineRunner init(CountryRepository countryRepository, OperatorRepository operatorRepository, PersonRepository personRepository){
     return(evt) -> Arrays.asList(" ".split(",")).forEach(a->{
         Person person = personRepository.save(new Person());
@@ -38,7 +39,6 @@ CommandLineRunner init(CountryRepository countryRepository, OperatorRepository o
     });
 
         }
-
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
@@ -136,6 +136,16 @@ class HandbookRestController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @GetMapping("/country/{id}")
+    public ResponseEntity<Country> getById(@PathVariable("areaCodeId") Long countryAreaCodeId, @PathVariable Long id){
+        Optional<Country> countryData = countryRepository.findByCountryAreaCodeId(countryAreaCodeId);
+        if(countryData.isPresent()){
+            return new ResponseEntity<>(countryData.get(), HttpStatus.OK);
+        }else {
+            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+    }
     @DeleteMapping("/country/{id}")
     public ResponseEntity<HttpStatus> deleteCountry(@PathVariable("id") Long countryAreaCodeId){
         try{
@@ -145,13 +155,33 @@ class HandbookRestController {
             return new ResponseEntity<>(HttpStatus.GATEWAY_TIMEOUT);
         }
     }
-    @PostMapping("/country/{}")
-    public ResponseEntity<Country> saveCountry(@RequestBody Country country){
-        try{
-            Country _country = countryRepository.saveCountry(new Country(country.getCountryName(), country.getAddress()));
-            return new ResponseEntity<>(_country, HttpStatus.CREATED);
-        }catch (Exception e){
-            return new ResponseEntity<>(null, HttpStatus.GATEWAY_TIMEOUT);
+    @PostMapping("/save/{}")
+    public String saveCountry(@RequestBody Country country){
+        countryRepository.saveCountry(country.getCountryName(), country.getAddress());
+        return "Saved Country...";
+
+    }
+    @PutMapping("/country/{id}")
+    public ResponseEntity<Country> updateCountry(@PathVariable("id") Long id, @RequestBody Country country){
+        Optional<Country> countryData = countryRepository.findById(id);
+        if(countryData.isPresent()){
+            Country _country = countryData.get();
+            _country.setCountryName(country.getCountryName());
+            _country.setСountryAreaCodeId(country.getCountryAreaCodeId());
+            _country.setAddress(country.getAddress());
+            return new ResponseEntity<>(countryRepository.save(_country), HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @GetMapping("/operator/{id}")
+    public ResponseEntity<Operator> getOperatorByOperatorId(@PathVariable("id") Long operatorId){
+        Optional<Operator> operatorData = operatorRepository.findById(operatorId);
+        if(operatorData.isPresent()){
+            return new ResponseEntity<>(operatorData.get(), HttpStatus.OK);
+        }else {
+            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
