@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface OperatorService {
 
     Optional<Operator> findById(Long id);
-    void save(Operator operator);
+    void saveOperator(Operator operator, Long operatorId);
     void delete(Long id);
     Operator getById(Long id);
     List<Operator> getAll();

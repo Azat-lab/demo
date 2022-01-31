@@ -12,19 +12,4 @@ public interface CountryService {
     void delete(Long id);
     List<Country> getAll();
 
-
-
-//    Optional<Country> save(Country country);
-//    List<Country> saveAllCountries(List<Country> countries);
-//    Optional<Country> update(Country country);
-//    Optional<Country> get(Long id);
-//    List<Country> getAll();
-//    Boolean findById(Long id);
-//    Boolean deleteById(Long id);
-//    Boolean deleteAll();
-
-//    Country saveCountry(Country country);
-//    void deleteCountry(Long id);
-//    Country getByCountryName(String name);
-//    List<Country> getAll();
 }

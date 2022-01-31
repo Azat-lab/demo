@@ -18,8 +18,6 @@ public interface CountryRepository extends JpaRepository<Country, Long> {
 
 
 
-
-
 //    @Query("select counrty from Country counrty where Country.CountryName = :name")
 //    Country findByCountryName(@Param("countryName") String countryName);
 
