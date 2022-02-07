@@ -1,7 +1,9 @@
 package com.example.HAndbook.demo.service.impl;
 
 import com.example.HAndbook.demo.entity.Operator;
+import com.example.HAndbook.demo.repository.OperatorRepository;
 import com.example.HAndbook.demo.service.OperatorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,36 +11,26 @@ import java.util.Optional;
 
 @Service
 public class OperatorServiceImpl implements OperatorService {
+@Autowired
+    OperatorRepository operator;;
+
     @Override
-    public Optional<Operator> findById(Long id) {
+    public Optional<Operator> findByOperatorId(Long operatorId) {
         return Optional.empty();
     }
-    @Override
-    public void saveOperator(Operator operator, Long operatorId) {
-    }
-    @Override
-    public void delete(Long id) {
-    }
-    @Override
-    public Operator getById(Long id) {
-        return null;
-    }
-    @Override
-    public List<Operator> getAll() {
-        return null;
-    }
-//    @PersistenceContext
-//    EntityManager entityManager;
-//
-//    @Override
-//    public void saveOperator(Operator operator, Long operatorId) {
-//        Operator operatorPerson = entityManager
-//                .createQuery("SELECT operator From Operator operator WHERE operator.operatorId=:id", Operator.class)
-//                .setParameter("id", operatorId)
-//                .getSingleResult();
-//        operator.setOperatorId(operatorId);
-//        entityManager.persist(operator);
-//
-//    }
 
+    @Override
+    public Optional<Operator> findByOperatorCode(Integer operatorCode) {
+        return Optional.empty();
+    }
+
+    @Override
+    public void deleteByOperatorId(Long operatorId) {
+
+    }
+
+    @Override
+    public List<Operator> saveOperator(String operatorCountry) {
+        return null;
+    }
 }

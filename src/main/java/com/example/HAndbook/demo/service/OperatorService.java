@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface OperatorService {
-
-    Optional<Operator> findById(Long id);
-    void saveOperator(Operator operator, Long operatorId);
-    void delete(Long id);
-    Operator getById(Long id);
-    List<Operator> getAll();
+    Optional<Operator> findByOperatorId(Long operatorId);
+    Optional<Operator> findByOperatorCode(Integer operatorCode);
+    void deleteByOperatorId(Long operatorId);
+    List<Operator> saveOperator(String operatorCountry);
 }

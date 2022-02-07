@@ -9,43 +9,40 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
 public class PersonServiceImpl implements PersonService {
-    private final PersonRepository personRepository;
     @Autowired
-    public PersonServiceImpl(PersonRepository personRepository){
-        this.personRepository = personRepository;
-    }
-
+    PersonRepository personRepository;
 
     @Override
-    public Long savePerson(Person person) {
+    public List<Person> findByPersonNameOrPersonSurname(String personName, String personSurname) {
         return null;
     }
 
     @Override
-    public Person getPerson(Long personId) {
-        return null;
+    public Optional<Person> findByPersonId(Integer personId) {
+        return Optional.empty();
     }
 
     @Override
-    public Long updatePerson(Person person) {
-        return null;
+    public Optional<Person> findByPhoneNumber(Integer phoneNumber) {
+        return Optional.empty();
     }
 
     @Override
-    public Long deletePerson(Long personId) {
+    public void deleteByPersonId(Integer personId) {
+
+    }
+
+    @Override
+    public List<Person> findAll() {
         return null;
     }
 }
 
-
-//
-//     public PersonServiceImpl(PersonRepository personRepository){
-//        this.personRepository = personRepository;
-//        }
 
 
 

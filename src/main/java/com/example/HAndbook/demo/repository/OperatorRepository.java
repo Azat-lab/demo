@@ -10,11 +10,5 @@ import java.util.Optional;
 
 @Repository
 public interface OperatorRepository extends JpaRepository<Operator, Long> {
-    Optional<Operator> findById(Long operatorId);
-    Optional<Operator> findByCode(Integer operatorCode);
-    void deleteById(Long operatorId);
-    List<Operator> saveOperator(String operatorCountry);
-
-    // List<Operator> findAllByOperatorCountry(String operatorCountry);
 
 }
