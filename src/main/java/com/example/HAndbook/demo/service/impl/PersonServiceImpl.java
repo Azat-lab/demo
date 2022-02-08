@@ -5,7 +5,6 @@ import com.example.HAndbook.demo.entity.Person;
 import com.example.HAndbook.demo.repository.PersonRepository;
 import com.example.HAndbook.demo.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,6 +38,12 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public List<Person> findAll() {
+        return null;
+    }
+
+    @Override
+    public Person savePersonById(Long id) {
+
         return null;
     }
 }

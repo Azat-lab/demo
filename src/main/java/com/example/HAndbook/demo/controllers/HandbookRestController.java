@@ -53,14 +53,14 @@ class HandbookRestController {
                 -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/person/phoneNumber")
+    @GetMapping("/persons/phoneNumber")
     public ResponseEntity<Person> getPersonByNumber(@PathVariable("phoneNumber") Integer phoneNumber) {
         Optional<Person> personData = personService.findByPhoneNumber(phoneNumber);
         return personData.map(person -> new ResponseEntity<>(person, HttpStatus.OK)).orElseGet(()
                 -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @DeleteMapping("/person/{id}")
+    @DeleteMapping("/persons/{id}")
     public ResponseEntity<HttpStatus> deletePerson(@PathVariable("id") Integer personId) {
         try {
             personService.deleteByPersonId(personId);
@@ -69,15 +69,15 @@ class HandbookRestController {
             return new ResponseEntity<>(HttpStatus.GATEWAY_TIMEOUT);
         }
     }
-//    @PostMapping("/person/{}")
-//    public ResponseEntity<Person> createPerson(@RequestBody Person person) {
-//        try {
-//            Person _person = personService.save(new Person(person.getPersonName(), person.getPersonSurname()));
-//            return new ResponseEntity<>(_person, HttpStatus.CREATED);
-//        } catch (Exception e) {
-//            return new ResponseEntity<>(null, HttpStatus.GATEWAY_TIMEOUT);
-//        }
-//    }
+    @PostMapping("/persons/{id}")
+    public ResponseEntity<Person> createPerson(@RequestBody Person person, @PathVariable Long personId) {
+        try {
+            Person _person = personService.savePersonById(person.getPersonId());
+            return new ResponseEntity<>(_person, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.GATEWAY_TIMEOUT);
+        }
+    }
 
     @GetMapping(value ="/country/{id}")
     public ResponseEntity<Country> getCountryByCountryAreaCodeId(@PathVariable("id") Long CountryAreaCodeId){

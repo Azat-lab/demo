@@ -11,5 +11,6 @@ public interface PersonService {
     Optional<Person> findByPhoneNumber(Integer phoneNumber);//+
     void deleteByPersonId(Integer personId);
     List<Person> findAll();
+    Person savePersonById(Long id);
 
 }
