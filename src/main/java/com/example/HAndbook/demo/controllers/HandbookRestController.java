@@ -29,7 +29,7 @@ class HandbookRestController {
         this.operatorService = operatorService;
     }
 
-    @GetMapping("/person")
+    @GetMapping("/persons")
     public ResponseEntity<List<Person>> getAllPersons(@RequestParam(required = false) String personName, String personSurname) {
         try {
             List<Person> persons = new ArrayList<Person>();
@@ -46,21 +46,21 @@ class HandbookRestController {
         }
     }
 
-    @GetMapping("/person")
+    @GetMapping("/persons/{id}")
     public ResponseEntity<Person> getPersonById(@PathVariable("id") Long personId) {
         Optional<Person> personData = personService.findByPersonId(Math.toIntExact(personId));
         return personData.map(person -> new ResponseEntity<>(person, HttpStatus.OK)).orElseGet(()
                 -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/person/{number}")
+    @GetMapping("/person/phoneNumber")
     public ResponseEntity<Person> getPersonByNumber(@PathVariable("phoneNumber") Integer phoneNumber) {
         Optional<Person> personData = personService.findByPhoneNumber(phoneNumber);
         return personData.map(person -> new ResponseEntity<>(person, HttpStatus.OK)).orElseGet(()
                 -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @DeleteMapping("/person")
+    @DeleteMapping("/person/{id}")
     public ResponseEntity<HttpStatus> deletePerson(@PathVariable("id") Integer personId) {
         try {
             personService.deleteByPersonId(personId);
@@ -88,7 +88,7 @@ class HandbookRestController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    @PostMapping("/country/")
+    @PostMapping("/country/address")
     public ResponseEntity<Country> createCountry(@RequestBody Country country){
         try{
             Country _country = countryService.saveByCountryAreaCodeId(country.getCountryAreaCodeId());
@@ -136,14 +136,14 @@ class HandbookRestController {
         }
     }
 
-    @GetMapping("/operator/{}")
+    @GetMapping("/operator/id")
     public ResponseEntity<Operator> getOperatorByCode(@PathVariable("id") Integer operatorCode) {
         Optional<Operator> operatorData = operatorService.findByOperatorCode(operatorCode);
         return operatorData.map(operator -> new ResponseEntity<>(operator, HttpStatus.OK)).orElseGet(()
                 -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping("/save/{}")
+    @PostMapping("/save/")
     public String saveOperatorCountry(@RequestBody Operator operator) {
         operatorService.saveOperator(operator.getOperatorCountry());
         return "Saved Operator...";
