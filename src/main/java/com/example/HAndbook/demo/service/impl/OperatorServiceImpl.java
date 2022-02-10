@@ -12,7 +12,7 @@ import java.util.Optional;
 @Service
 public class OperatorServiceImpl implements OperatorService {
 @Autowired
-    OperatorRepository operator;;
+    OperatorRepository operatorRepository;;
 
     @Override
     public Optional<Operator> findByOperatorId(Long operatorId) {
@@ -26,9 +26,8 @@ public class OperatorServiceImpl implements OperatorService {
 
     @Override
     public void deleteByOperatorId(Long operatorId) {
-
+        operatorRepository.deleteById(operatorId);
     }
-
     @Override
     public List<Operator> saveOperator(String operatorCountry) {
         return null;

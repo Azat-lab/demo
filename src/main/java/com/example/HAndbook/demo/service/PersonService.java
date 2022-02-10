@@ -7,10 +7,10 @@ import java.util.Optional;
 
 public interface PersonService {
     List<Person> findByPersonNameOrPersonSurname(String personName, String personSurname);//+
-    Optional<Person> findByPersonId(Integer personId);//+
+    Optional<Person> findByPersonId(Long personId);//+
     Optional<Person> findByPhoneNumber(Integer phoneNumber);//+
-    void deleteByPersonId(Integer personId);
-    List<Person> findAll();
-    Person savePersonById(Long id);
+    void deleteByPersonId(Long personId);
+    Person savePersonById(Long personId);
+
 
 }

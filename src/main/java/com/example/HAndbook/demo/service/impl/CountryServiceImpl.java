@@ -18,7 +18,7 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public Country saveByCountryAreaCodeId(Long id) {
-        return null;
+        return countryRepository.save(saveByCountryAreaCodeId(id));
     }
 
     @Override
@@ -28,11 +28,13 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public Optional<Country> findByCountryAreaCodeId(Long id) {
-        return Optional.empty();
+        return countryRepository.findById(id);
     }
 
     @Override
-    public void deleteByCountryAreaCodeId(Long id) {
+    public long deleteByCountryAreaCodeId(Long id) {
+        countryRepository.deleteById(deleteByCountryAreaCodeId(id));
 
+        return 0;
     }
 }

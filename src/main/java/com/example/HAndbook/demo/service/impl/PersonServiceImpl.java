@@ -20,32 +20,26 @@ public class PersonServiceImpl implements PersonService {
     public List<Person> findByPersonNameOrPersonSurname(String personName, String personSurname) {
         return null;
     }
-
     @Override
-    public Optional<Person> findByPersonId(Integer personId) {
-        return Optional.empty();
+    public Optional<Person> findByPersonId(Long personId) {
+        return personRepository.findById(Math.toIntExact(personId));
     }
-
     @Override
     public Optional<Person> findByPhoneNumber(Integer phoneNumber) {
-        return Optional.empty();
+        return personRepository.findById(phoneNumber);
+    }
+    @Override
+    public void deleteByPersonId(Long personId) {
+        personRepository.deleteById(Math.toIntExact(personId));
     }
 
     @Override
-    public void deleteByPersonId(Integer personId) {
+    public Person savePersonById(Long personId) {
+        personRepository.save(savePersonById(personId));
 
-    }
-
-    @Override
-    public List<Person> findAll() {
         return null;
     }
 
-    @Override
-    public Person savePersonById(Long id) {
-
-        return null;
-    }
 }
 
 

@@ -10,7 +10,7 @@ public interface CountryService {
     Country saveByCountryAreaCodeId(Long id);
     List<Country> findByCountryNameAndAddress(String countryName, String address);
     Optional<Country> findByCountryAreaCodeId(Long id);
-    void deleteByCountryAreaCodeId(Long id);
+    long deleteByCountryAreaCodeId(Long id);
 //    Country getByName(String country);
 //    Optional<Country> findById(Long id);
 //    void save(Country country);
